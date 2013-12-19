@@ -1,4 +1,4 @@
-Gradle Plugin Blank Project
+Gradle Plugin Blank Project [![Build Status](https://travis-ci.org/int128/gradle-plugin-blank.png)](https://travis-ci.org/int128/gradle-plugin-blank)
 ===========================
 
 Blank template of the Gradle plugin.
