@@ -23,38 +23,28 @@ This project contains these features:
   * Testing with Spock (see [HelloPluginSpec.groovy](src/test/groovy/com/example/HelloPluginSpec.groovy))
   * Wiring plugin name (see [hello.properties](src/main/resources/META-INF/gradle-plugins/hello.properties))
   * Generating GroovyDoc JAR and sources JAR
-  * Publishing artifacts into the Maven Central Repository
+  * Publishing the plugin on Bintray
   * Continuous integration support on Travis CI
   * Gradle Wrapper
   * `.gitignore` for Gradle, IDEA and Eclipse
 
 
-Publishing artifacts (optional)
--------------------------------
+Publish the plugin
+------------------
 
-This section explains how to publish your artifacts into the Maven Central Repository.
+Update `gradle.properties` in the repository.
 
-You must have Sonatype OSS Repository Hosting account and your own PGP key.
-See [Sonatype OSS Maven Repository Usage Guide](https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide) for further information.
+You must have Bintray account and provide its credential in `~/.gradle/gradle.properties` as follows:
 
-Your account must be provided in the properties file.
-Create `~/.gradle/gradle.properties` as:
-```
-signing.keyId=XXXXXXXX
-signing.secretKeyRingFile=/home/xxxxxxxx/.gnupg/secring.gpg
-sonatypeUsername=xxxxxxxx
-sonatypeFullname=xxxxxxxx
+```ini
+bintrayUser=example
+bintrayKey=secret
 ```
 
-Your project metadata must be provided in the build script.
-Modify those in [build.publish.gradle](/build.publish.gradle).
+Run the upload task with publishing version.
 
-Then, just run:
-```
-$ ./gradlew publishMavenCentral
-Enter password for PGP key XXXXXXXX:
-Enter password for xxxxxxxx@oss.sonatype.org:
-...
+```sh
+./gradlew -Pversion=x.y.z bintrayUpload
 ```
 
 
