@@ -1,36 +1,38 @@
-Gradle Plugin Blank Project [![Build Status](https://travis-ci.org/int128/gradle-plugin-blank.png)](https://travis-ci.org/int128/gradle-plugin-blank)
+Gradle Plugin Blank Project
 ===========================
 
-Blank template of the Gradle plugin.
+A Gradle plugin project with blank implementation.
 
-
-How to use
-----------
-
-`git clone` and rename it.
-
-Run `./gradlew build` to build the project.
-
-Import the project into IDE.
+[![Build Status](https://travis-ci.org/int128/gradle-plugin-blank.png)](https://travis-ci.org/int128/gradle-plugin-blank)
 
 
 Features
 --------
 
-This project contains these features:
+This contains following features:
 
   * Blank implementation of the plugin (see [HelloPlugin.groovy](src/main/groovy/com/example/HelloPlugin.groovy))
   * Testing with Spock (see [HelloPluginSpec.groovy](src/test/groovy/com/example/HelloPluginSpec.groovy))
   * Wiring plugin name (see [hello.properties](src/main/resources/META-INF/gradle-plugins/hello.properties))
   * Generating GroovyDoc JAR and sources JAR
-  * Publishing the plugin on Bintray
+  * Publishing the plugin on [Bintray](https://bintray.com)
   * Continuous integration support on Travis CI
   * Gradle Wrapper
   * `.gitignore` for Gradle, IDEA and Eclipse
 
 
-Publish the plugin
-------------------
+Build
+-----
+
+Run the build task.
+
+```sh
+./gradlew build
+```
+
+
+Publish
+-------
 
 Update `gradle.properties` in the repository.
 
@@ -51,5 +53,4 @@ Run the upload task with publishing version.
 Contributions
 -------------
 
-Welcome.
-Please send me your issues or pull requests.
+Please let me know issues and pull requests.
