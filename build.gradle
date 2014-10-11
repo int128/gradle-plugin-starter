@@ -69,7 +69,7 @@ bintray {
         repo = 'maven'
         name = project.name
         version {
-            attributes = ['gradle-plugin': 'com.example.blank:com.example:blank']
+            attributes = ['gradle-plugin': 'com.example.hello:com.example:hello-plugin']
         }
     }
 }

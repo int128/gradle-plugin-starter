@@ -11,7 +11,7 @@ class HelloPluginSpec extends Specification {
 
         when:
         project.with {
-            apply plugin: 'hello'
+            apply plugin: 'com.example.hello'
         }
 
         then:
