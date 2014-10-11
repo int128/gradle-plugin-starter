@@ -1,4 +1,13 @@
 language: java
-jdk: oraclejdk7
+jdk:
+  - oraclejdk7
+  - oraclejdk8
+
+install:
+  - ./gradlew install
 script:
-  - TERM=dumb ./gradlew -i build
+  - ./gradlew check
+
+env:
+  global:
+    - TERM=dumb
