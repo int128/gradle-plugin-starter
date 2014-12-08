@@ -1,7 +1,7 @@
-Gradle Plugin Blank Project
-===========================
+Gradle Plugin Template
+======================
 
-A Gradle plugin project with blank implementation.
+This is a template project of Gradle plugin with blank implementation.
 
 [![Build Status](https://travis-ci.org/int128/gradle-plugin-blank.png)](https://travis-ci.org/int128/gradle-plugin-blank)
 
@@ -15,14 +15,24 @@ This contains following features:
   * Testing with Spock (see [HelloPluginSpec.groovy](src/test/groovy/com/example/HelloPluginSpec.groovy))
   * Wiring plugin name (see [hello.properties](src/main/resources/META-INF/gradle-plugins/hello.properties))
   * Generating GroovyDoc JAR and sources JAR
-  * Publishing the plugin on [Bintray](https://bintray.com)
+  * Publishing the plugin on [Bintray](https://bintray.com) and [Gradle Plugins](http://plugins.gradle.org)
   * Continuous integration support on Travis CI
   * Gradle Wrapper
   * `.gitignore` for Gradle, IDEA and Eclipse
 
 
-Build
------
+Development
+-----------
+
+JDK 7 or later is required.
+Intellij IDEA is recommended.
+All dependencies are downloaded by Gradle wrapper.
+
+Travis CI will compile and test the branch on each push and pull request.
+
+Artifacts will be published on [Bintray](https://bintray.com) and [Gradle Plugins](http://plugins.gradle.org).
+
+### Build
 
 Run the build task.
 
@@ -30,11 +40,9 @@ Run the build task.
 ./gradlew build
 ```
 
+### Publish
 
-Publish
--------
-
-Update `gradle.properties` in the repository.
+Update metadata of the plugin in `gradle.properties`.
 
 You must have Bintray account and provide its credential in `~/.gradle/gradle.properties` as follows:
 
@@ -53,4 +61,5 @@ Run the upload task with publishing version.
 Contributions
 -------------
 
-Please let me know issues and pull requests.
+This is an open source software licensed under the Apache License Version 2.0.
+Any issues or pull requests are welcome.
