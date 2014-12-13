@@ -21,8 +21,13 @@ This contains following features:
   * `.gitignore` for Gradle, IDEA and Eclipse
 
 
-Development
------------
+Contributions
+-------------
+
+This is an open source software licensed under the Apache License Version 2.0.
+Any issues or pull requests are welcome.
+
+### Development
 
 JDK 7 or later is required.
 Intellij IDEA is recommended.
@@ -56,10 +61,3 @@ Run the upload task with publishing version.
 ```sh
 ./gradlew -Pversion=x.y.z bintrayUpload
 ```
-
-
-Contributions
--------------
-
-This is an open source software licensed under the Apache License Version 2.0.
-Any issues or pull requests are welcome.
