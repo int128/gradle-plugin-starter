@@ -2,9 +2,11 @@ language: java
 jdk: oraclejdk7
 
 install:
-  - ./gradlew install
+- ./gradlew install
+
 script:
-  - ./gradlew check
+- ./gradlew check
+- ./gradlew -p acceptance-test test
 
 env:
   global:

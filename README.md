@@ -45,6 +45,15 @@ Run the build task.
 ./gradlew build
 ```
 
+### Acceptance Test
+
+Install the artifact into the local repository and run the test task.
+
+```sh
+./gradlew install
+./gradlew -p acceptance-test test
+```
+
 ### Publish
 
 Update metadata of the plugin in `gradle.properties`.
