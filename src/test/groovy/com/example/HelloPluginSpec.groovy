@@ -5,7 +5,7 @@ import spock.lang.Specification
 
 class HelloPluginSpec extends Specification {
 
-    def "applying the plugin"() {
+    def "apply() should load the plugin"() {
         given:
         def project = ProjectBuilder.builder().build()
 
@@ -15,7 +15,7 @@ class HelloPluginSpec extends Specification {
         }
 
         then:
-        noExceptionThrown()
+        project.plugins.hasPlugin(HelloPlugin)
     }
 
 }
