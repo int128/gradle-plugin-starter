@@ -11,12 +11,11 @@ Features
 
 This contains following features:
 
+  * Plugin generator (see [plugin-generator.gradle](gradle/plugin-generator.gradle))
   * Blank implementation of the plugin (see [HelloPlugin.groovy](src/main/groovy/com/example/HelloPlugin.groovy))
   * Testing with Spock (see [HelloPluginSpec.groovy](src/test/groovy/com/example/HelloPluginSpec.groovy))
-  * Wiring plugin name (see [hello.properties](src/main/resources/META-INF/gradle-plugins/hello.properties))
-  * Generating GroovyDoc JAR and sources JAR
-  * Publishing the plugin on [Bintray](https://bintray.com) and [Gradle Plugins](http://plugins.gradle.org)
   * Continuous integration support on Travis CI
+  * Publishing the plugin on [Bintray](https://bintray.com) and [Gradle Plugins](http://plugins.gradle.org)
   * Gradle Wrapper
   * `.gitignore` for Gradle, IDEA and Eclipse
 
