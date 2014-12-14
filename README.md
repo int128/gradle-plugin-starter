@@ -11,9 +11,10 @@ Features
 
 This contains following features:
 
-  * Plugin generator (see [plugin-generator.gradle](gradle/plugin-generator.gradle))
+  * Plugin generator
   * Blank implementation of the plugin (see [HelloPlugin.groovy](src/main/groovy/com/example/HelloPlugin.groovy))
   * Testing with Spock (see [HelloPluginSpec.groovy](src/test/groovy/com/example/HelloPluginSpec.groovy))
+  * Acceptance Test
   * Continuous integration support on Travis CI
   * Publishing the plugin on [Bintray](https://bintray.com) and [Gradle Plugins](http://plugins.gradle.org)
   * Gradle Wrapper
@@ -24,9 +25,9 @@ Getting Started
 ---------------
 
 Update plugin ID, group name and description in `gradle.properties`.
-See also [how to submit your plugin](http://plugins.gradle.org/submit) for details.
+See also [how to submit your plugin](http://plugins.gradle.org/submit).
 
-Then, run the generate task.
+Then, run the generate task. See [plugin-generator.gradle](gradle/plugin-generator.gradle) for details.
 
 ```
 ./gradlew generatePlugin
@@ -42,38 +43,18 @@ Generating plugin test: .../src/test/groovy/com/example/HelloPluginSpec.groovy
 BUILD SUCCESSFUL
 ```
 
-Sign up Bintray and provide your user name and API key in `~/.gradle/gradle.properties` as follows:
-
-```ini
-bintray.credential=user:apikey
-```
-
-
-Contributions
--------------
-
-This is an open source software licensed under the Apache License Version 2.0.
-Any issues or pull requests are welcome.
-
-### Development
-
-JDK 7 or later is required.
-Intellij IDEA is recommended.
 All dependencies are downloaded by Gradle wrapper.
 
-Travis CI will compile and test the branch on each push and pull request.
+### Develop the plugin
 
-Artifacts will be published on [Bintray](https://bintray.com) and [Gradle Plugins](http://plugins.gradle.org).
+Open the project with IDE like IntelliJ IDEA.
+Repeat following steps.
 
-### Build
+1. Write a feature in `README.md`
+2. Write a test code in `src/test/groovy/*Spec.groovy`
+3. Write a product code in `src/main/groovy/*.groovy`
 
-Run the build task.
-
-```sh
-./gradlew build
-```
-
-### Acceptance Test
+### Acceptance test
 
 Install the artifact into the local repository and run the test task.
 
@@ -82,10 +63,23 @@ Install the artifact into the local repository and run the test task.
 ./gradlew -p acceptance-test test
 ```
 
-### Publish
+### Publish the plugin
+
+Sign up Bintray and provide your user name and API key in `~/.gradle/gradle.properties` as follows:
+
+```ini
+bintray.credential=user:apikey
+```
 
 Run the upload task with release version.
 
 ```sh
 ./gradlew -Pversion=0.1 bintrayUpload
 ```
+
+
+Contributions
+-------------
+
+This is an open source software licensed under the Apache License Version 2.0.
+Any issues or pull requests are welcome.
