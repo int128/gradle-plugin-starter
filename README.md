@@ -78,6 +78,27 @@ Run the upload task with release version.
 ```
 
 
+Working with Travis CI
+----------------------
+
+This project contains the continuous integration support and Travis CI will build the project on each push.
+
+### Publish the plugin on Git tag
+
+Add your user name and API key of Bintray in [.travis.yml](.travis.yml) as an encrypted variable.
+
+```sh
+travis encrypt --add -- BINTRAY=user:apikey
+```
+
+Then, push the tag.
+
+```sh
+git tag v0.1
+git push origin --tags
+```
+
+
 Contributions
 -------------
 
