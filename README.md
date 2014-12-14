@@ -21,6 +21,35 @@ This contains following features:
   * `.gitignore` for Gradle, IDEA and Eclipse
 
 
+Getting Started
+---------------
+
+Update plugin ID, group name and description in `gradle.properties`.
+See also [how to submit your plugin](http://plugins.gradle.org/submit) for details.
+
+Then, run the generate task.
+
+```
+./gradlew generatePlugin
+
+:generatePluginClass
+Generating plugin class: .../src/main/groovy/com/example/HelloPlugin.groovy
+:generatePluginMetadata
+Generating plugin metadata: .../src/main/resources/META-INF/gradle-plugins/com.example.hello.properties
+:generatePluginTestClass
+Generating plugin test: .../src/test/groovy/com/example/HelloPluginSpec.groovy
+:generatePlugin
+
+BUILD SUCCESSFUL
+```
+
+Sign up Bintray and provide your user name and API key in `~/.gradle/gradle.properties` as follows:
+
+```ini
+bintray.credential=user:apikey
+```
+
+
 Contributions
 -------------
 
@@ -56,16 +85,8 @@ Install the artifact into the local repository and run the test task.
 
 ### Publish
 
-Update metadata of the plugin in `gradle.properties`.
-
-You must have Bintray account and provide your credential in `~/.gradle/gradle.properties` as follows:
-
-```ini
-bintray.credential=user:apikey
-```
-
-Run the upload task with publishing version.
+Run the upload task with release version.
 
 ```sh
-./gradlew -Pversion=x.y.z bintrayUpload
+./gradlew -Pversion=0.1 bintrayUpload
 ```
