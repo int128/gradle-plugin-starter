@@ -1,9 +1,9 @@
-package com.example
+package org.dstadler
 
 import org.gradle.testfixtures.ProjectBuilder
 import spock.lang.Specification
 
-class HelloPluginSpec extends Specification {
+class CommonsdostPluginSpec extends Specification {
 
     def "apply() should load the plugin"() {
         given:
@@ -11,11 +11,11 @@ class HelloPluginSpec extends Specification {
 
         when:
         project.with {
-            apply plugin: 'com.example.hello'
+            apply plugin: 'org.dstadler.commonsdost'
         }
 
         then:
-        project.plugins.hasPlugin(HelloPlugin)
+        project.plugins.hasPlugin(CommonsdostPlugin)
     }
 
 }
