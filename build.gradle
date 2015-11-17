@@ -91,5 +91,5 @@ task install(dependsOn: 'publishMavenPublicationToMavenLocal') {
 apply from: file('gradle/plugin-generator.gradle')
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.2.1'
+    gradleVersion = '2.9'
 }
