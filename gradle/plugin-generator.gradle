@@ -1,8 +1,8 @@
 task generatePlugin {
-    assert project.group
-    assert project.property('gradle.plugin.id')
+    assert rootProject.group
+    assert rootProject.hasProperty('gradlePluginId')
     ext {
-        pluginId = project.property('gradle.plugin.id').toString()
+        pluginId = rootProject.property('gradlePluginId').toString()
     }
     dependsOn 'generatePluginClass', 'generatePluginTestClass', 'generatePluginMetadata'
 }
@@ -10,13 +10,13 @@ task generatePlugin {
 task generatePluginClass {
     ext {
         className = "${generatePlugin.pluginId.split(/\./).last().capitalize()}Plugin"
-        fqcn = "${project.group}.$className"
+        fqcn = "${rootProject.group}.$className"
         outputFile = file("src/main/groovy/${fqcn.replace('.', '/')}.groovy")
     }
     doLast {
         logger.lifecycle("Generating plugin class: $outputFile")
         outputFile.text = """\
-package ${project.group}
+package ${rootProject.group}
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -38,7 +38,7 @@ task generatePluginTestClass {
     doLast {
         logger.lifecycle("Generating plugin test: $outputFile")
         outputFile.text = """\
-package ${project.group}
+package ${rootProject.group}
 
 import org.gradle.testfixtures.ProjectBuilder
 import spock.lang.Specification
