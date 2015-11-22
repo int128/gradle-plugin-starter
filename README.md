@@ -1,4 +1,4 @@
-Gradle Plugin Template [![Build Status](https://travis-ci.org/int128/gradle-plugin-blank.svg?branch=master)](https://travis-ci.org/int128/gradle-plugin-blank) [![Gradle Status](https://gradleupdate.appspot.com/int128/gradle-plugin-blank/status.svg?branch=master)](https://gradleupdate.appspot.com/int128/gradle-plugin-blank/status)
+Gradle Plugin Template [![Build Status](https://travis-ci.org/int128/gradle-plugin-starter.svg?branch=master)](https://travis-ci.org/int128/gradle-plugin-starter) [![Gradle Status](https://gradleupdate.appspot.com/int128/gradle-plugin-starter/status.svg?branch=master)](https://gradleupdate.appspot.com/int128/gradle-plugin-starter/status)
 ======================
 
 This is a template project of Gradle plugin with blank implementation.
