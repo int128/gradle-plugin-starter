@@ -22,7 +22,7 @@ This contains following features:
 Getting Started
 ---------------
 
-Update plugin ID, group name and description in `gradle.properties`.
+Update plugin ID, group name and description in `build.gradle`.
 See also [how to submit your plugin](http://plugins.gradle.org/submit).
 
 Then, run the generate task. See [plugin-generator.gradle](gradle/plugin-generator.gradle) for details.
@@ -66,7 +66,8 @@ Install the artifact into the local repository and run the test task.
 Sign up Bintray and provide your user name and API key in `~/.gradle/gradle.properties` as follows:
 
 ```ini
-bintray.credential=user:apikey
+bintrayUser=user
+bintrayKey=apikey
 ```
 
 Run the upload task with release version.
@@ -83,16 +84,12 @@ This project contains the continuous integration support and Travis CI will buil
 
 ### Publish the plugin on Git tag
 
-Add your user name and API key of Bintray in [.travis.yml](.travis.yml) as an encrypted variable.
-
-```sh
-travis encrypt --add -- BINTRAY=user:apikey
-```
+Add environment variables on Travis CI. Set your user name as `BINTRAY_USER` and API key as `BINTRAY_KEY`.
 
 Then, push the tag.
 
 ```sh
-git tag v0.1
+git tag 0.1
 git push origin --tags
 ```
 

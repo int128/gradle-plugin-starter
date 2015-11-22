@@ -10,8 +10,4 @@ script:
 - ./gradlew -p acceptance-test test
 
 after_success:
-- test ${TRAVIS_TAG} -a ${BINTRAY} && ./gradlew -Pversion=${TRAVIS_TAG#v} bintrayUpload
-
-env:
-  global:
-  - TERM=dumb
+- test ${TRAVIS_TAG} && ./gradlew bintrayUpload
