@@ -6,12 +6,12 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.example:gradle-plugin-blank:$version"
+        classpath "org.hidetake:gradle-plugin-starter:$version"
     }
 }
 
-apply plugin: 'com.example.hello'
+apply plugin: 'org.hidetake.starter'
 
 task test << {
-    assert plugins.hasPlugin('com.example.hello')
+    assert plugins.hasPlugin('org.hidetake.starter')
 }
