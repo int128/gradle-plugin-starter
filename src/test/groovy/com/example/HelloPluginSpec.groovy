@@ -11,7 +11,7 @@ class HelloPluginSpec extends Specification {
 
         when:
         project.with {
-            apply plugin: 'com.example.hello'
+            apply plugin: 'org.hidetake.starter'
         }
 
         then:
