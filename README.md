@@ -9,12 +9,11 @@ Features
 
 This contains following features:
 
-  * Plugin generator
   * Blank implementation of the plugin (see [HelloPlugin.groovy](src/main/groovy/com/example/HelloPlugin.groovy))
   * Testing with Spock (see [HelloPluginSpec.groovy](src/test/groovy/com/example/HelloPluginSpec.groovy))
-  * Acceptance Test
-  * Continuous integration support on Travis CI
-  * Publishing the plugin on [Bintray](https://bintray.com) and [Gradle Plugins](http://plugins.gradle.org)
+  * Acceptance Test using Gradle TestKit
+  * Continuous Integration and Delivery on Travis CI
+  * Publishing the plugin on [Gradle Plugins](http://plugins.gradle.org)
   * Gradle Wrapper
   * `.gitignore` for Gradle, IDEA and Eclipse
 
@@ -22,80 +21,49 @@ This contains following features:
 Getting Started
 ---------------
 
-Update plugin ID, group name and description in `build.gradle`.
-See also [how to submit your plugin](http://plugins.gradle.org/submit).
+Create your account on [Gradle Plugins](http://plugins.gradle.org/submit) and get the API key.
 
-Then, run the generate task. See [plugin-generator.gradle](gradle/plugin-generator.gradle) for details.
-
-```
-./gradlew generatePlugin
-
-:generatePluginClass
-Generating plugin class: .../src/main/groovy/com/example/HelloPlugin.groovy
-:generatePluginMetadata
-Generating plugin metadata: .../src/main/resources/META-INF/gradle-plugins/com.example.hello.properties
-:generatePluginTestClass
-Generating plugin test: .../src/test/groovy/com/example/HelloPluginSpec.groovy
-:generatePlugin
-
-BUILD SUCCESSFUL
+```properties
+# ~/.gradle/gradle.properties
+gradle.publish.key=xxx
+gradle.publish.secret=
 ```
 
-All dependencies are downloaded by Gradle wrapper.
+This repository contains the example implementation.
+Change files to your Group ID and Plugin ID.
 
-### Develop the plugin
+Identifier  | In this repository    | To be changed
+------------|-----------------------|--------------
+Group ID    | `com.example`         | Package name of production and test code, `group` in the build script
+Plugin ID   | `com.example.hello`   | Class name of production and test code, the plugin descriptor in resources, `id` in the build script
 
-Open the project with IDE like IntelliJ IDEA.
-Repeat following steps.
-
-1. Write a feature in `README.md`
-2. Write a test code in `src/test/groovy/*Spec.groovy`
-3. Write a product code in `src/main/groovy/*.groovy`
-
-### Acceptance test
-
-Install the artifact into the local repository and run the test task.
+Build the plugin.
 
 ```sh
-./gradlew install
-./gradlew -p acceptance-test test
+./gradlew build
 ```
 
-### Publish the plugin
-
-Sign up Bintray and provide your user name and API key in `~/.gradle/gradle.properties` as follows:
-
-```ini
-bintrayUser=user
-bintrayKey=apikey
-```
-
-Run the upload task with release version.
+Publish the plugin.
 
 ```sh
-./gradlew -Pversion=0.1 bintrayUpload
+TRAVIS_TAG=0.1.0 ./gradlew publishPlugins
 ```
 
 
 Working with Travis CI
 ----------------------
 
-This project contains the continuous integration support and Travis CI will build the project on each push.
+Travis CI builds the plugin continuously.
+It also publishes the plugin if a tag is pushed and following variables are set.
 
-### Publish the plugin on Git tag
-
-Add environment variables on Travis CI. Set your user name as `BINTRAY_USER` and API key as `BINTRAY_KEY`.
-
-Then, push the tag.
-
-```sh
-git tag 0.1
-git push origin --tags
-```
+Environment Variable        | Value
+----------------------------|------
+`$GRADLE_PUBLISH_KEY`       | `gradle.publish.key` of the API key
+`$GRADLE_PUBLISH_SECRET`    | `gradle.publish.secret` of the API key
 
 
 Contributions
 -------------
 
 This is an open source software licensed under the Apache License Version 2.0.
-Any issues or pull requests are welcome.
+Feel free to open issues or pull requests.

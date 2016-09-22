@@ -1,23 +1,10 @@
 plugins {
     id 'groovy'
-    id 'maven-publish'
-    id 'com.jfrog.bintray' version '1.4'
+    id 'com.gradle.plugin-publish' version '0.9.6'
 }
 
-description = 'A template project of Gradle plugin'
-group = 'org.hidetake'
-version = 'SNAPSHOT'
-
-ext.gradlePluginId = 'org.hidetake.starter'
-ext.license = 'Apache-2.0'
-ext.licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-ext.vcsUrl = 'https://github.com/int128/gradle-plugin-starter.git'
-
-// Set product version if tag is given on Travis CI
-System.getenv('TRAVIS_TAG')?.eachMatch(/^[\d.]+$/) { m -> project.version = m[0] }
-
-sourceCompatibility = JavaVersion.VERSION_1_6
-targetCompatibility = JavaVersion.VERSION_1_6
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     jcenter()
@@ -32,77 +19,19 @@ dependencies {
     testCompile 'cglib:cglib-nodep:3.1'
 }
 
-task javadocJar(type: Jar, dependsOn: groovydoc) {
-    from "${buildDir}/docs/groovydoc"
-    classifier = 'javadoc'
-}
+group = 'com.example'
+version = System.getenv('TRAVIS_TAG') ?: 'SNAPSHOT'
 
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allSource
-    classifier = 'sources'
-}
+pluginBundle {
+    website = 'https://github.com/int128/gradle-plugin-starter'
+    vcsUrl = 'https://github.com/int128/gradle-plugin-starter'
+    description = 'Hello World Plugin'
+    tags = ['example']
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from components.java
-            artifact sourcesJar
-            artifact javadocJar
-            groupId rootProject.group
-            artifactId rootProject.name
-            pom.withXml {
-                asNode().children().last() + {
-                    resolveStrategy = DELEGATE_FIRST
-                    name rootProject.name
-                    description rootProject.description
-                    url rootProject.vcsUrl
-                    scm {
-                        url rootProject.vcsUrl
-                        connection "scm:git:$rootProject.vcsUrl"
-                    }
-                    licenses {
-                        license {
-                            name rootProject.license
-                            url rootProject.licenseUrl
-                            distribution 'repo'
-                        }
-                    }
-                    developers {
-                        developer {
-                            id rootProject.group
-                            name rootProject.group
-                        }
-                    }
-                }
-            }
+    plugins {
+        helloPlugin {
+            id = 'com.example.hello'
+            displayName = 'Hello World Plugin'
         }
     }
 }
-
-bintray {
-    user = System.getenv('BINTRAY_USER') ?: getProjectProperty('bintrayUser')
-    key  = System.getenv('BINTRAY_KEY')  ?: getProjectProperty('bintrayKey')
-    publications = ['maven']
-    pkg {
-        repo = 'maven'
-        name = rootProject.name
-        licenses = [rootProject.license]
-        vcsUrl = rootProject.vcsUrl
-        version {
-            attributes = ['gradle-plugin': "${getProjectProperty('gradlePluginId')}:${rootProject.group}:${rootProject.name}"]
-            name = rootProject.version
-        }
-    }
-}
-
-tasks.bintrayUpload.doFirst {
-    assert !project.version.contains('SNAPSHOT')
-}
-
-task install(dependsOn: 'publishMavenPublicationToMavenLocal')
-
-def getProjectProperty(String key, String defaultValue = null) {
-    project.hasProperty(key) ? project.property(key) : defaultValue
-}
-
-apply from: file('gradle/plugin-generator.gradle')

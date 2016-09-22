@@ -1,13 +1,13 @@
-sudo: false
 language: java
-jdk: oraclejdk7
+jdk: oraclejdk8
 
 install:
-- ./gradlew install
+- mkdir -p $HOME/.gradle
+- echo "gradle.publish.key=$GRADLE_PUBLISH_KEY" >> $HOME/.gradle/gradle.properties
+- echo "gradle.publish.secret=$GRADLE_PUBLISH_SECRET" >> $HOME/.gradle/gradle.properties
 
 script:
 - ./gradlew check
-- ./gradlew -p acceptance-test test
 
 after_success:
-- test ${TRAVIS_TAG} && ./gradlew bintrayUpload
+- test ${TRAVIS_TAG} && ./gradlew publishPlugins
